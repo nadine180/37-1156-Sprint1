@@ -1,25 +1,25 @@
 var express = require('express'),
   router = express.Router(),
   productCtrl = require('../controllers/ProductController');
-  perihanproductCtrl = require('../controllers/PerihanController');
+  NadineproductCtrl = require('../controllers/NadineController');
 
 
   const authentication = require('../controllers/authentication')(router);
   app = express();
 	memberCtrl = require('../controllers/MemberController');
 
-   //-------------------------------Perihan Routes-----------------------------------
+   //-------------------------------Nadine Routes-----------------------------------
 
-   router.get('/perihan/getProducts', perihanproductCtrl.getProducts);
-   router.get('/perihan/getProduct/:perihanproductsId', perihanproductCtrl.getProduct);
-   router.post('/perihan/createProduct', perihanproductCtrl.createProduct);
-   router.get('/perihan/getProductsBySeller/:seller',perihanproductCtrl.getProductsBySeller);
- 
-   router.get('/perihan/getProductsByComponent/:component',
-   perihanproductCtrl.getProductsByComponent
+   router.get('/Nadine/getProducts', NadineproductCtrl.getProducts);
+   router.get('/Nadine/getProduct/:NadineproductsId', NadineproductCtrl.getProduct);
+   router.post('/Nadine/createProduct', NadineproductCtrl.createProduct);
+   router.get('/Nadine/getProductsBySeller/:seller',NadineproductCtrl.getProductsBySeller);
+
+   router.get('/Nadine/getProductsByComponent/:component',
+   NadineproductCtrl.getProductsByComponent
    );
-   router.patch('/perihan/updateProduct/:perihanproductsId', perihanproductCtrl.updateProduct);
-   router.delete('/perihan/deleteProduct/:perihanproductsId', perihanproductCtrl.deleteProduct);
+   router.patch('/Nadine/updateProduct/:NadineproductsId', NadineproductCtrl.updateProduct);
+   router.delete('/Nadine/deleteProduct/:NadineproductsId', NadineproductCtrl.deleteProduct);
 
 //-------------------------------Product Routes-----------------------------------
 router.get('/product/getProducts', productCtrl.getProducts);
