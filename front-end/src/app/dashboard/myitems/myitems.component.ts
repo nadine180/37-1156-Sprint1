@@ -1,48 +1,65 @@
 import { Component, OnInit } from '@angular/core';
-import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
-
+import { LocalDataSource } from 'ng2-smart-table';
+import { MyitemsService } from './myitems.service'
 @Component({
-  selector: 'app-myitems',
+  selector: 'app-electronics',
   templateUrl: './myitems.component.html',
-  styleUrls: ['./myitems.component.scss']
+  styleUrls: ['./myitems.component.scss'],
+  providers: [MyitemsService]
 })
-export class MyitemsComponent implements OnInit {
+export class MyItemsComponent implements OnInit {
 
   source : LocalDataSource;
 
   settings = {
     columns: {
-      id: {
-        title: 'ID',
-        filter:false
-      },
+     
       name: {
-        title: 'Full Name',
+        title: 'Name',
         filter:false
       },
-      username: {
-        title: 'User Name',
+      price: {
+        title: 'Price',
         filter:false
       },
-      email: {
-        title: 'Email',
+      createdAt: {
+        title: 'CreatedAt',
+        filter:false
+      },
+      UpdatedAt: {
+        title: 'UpdatedAt',
+        filter:false
+      },
+      sellername: {
+        title: 'Seller Name',
         filter:false
       }
+
+
     }
   };
 
-  data = [
-    {
-      id: 1,
-      name: "Leanne Graham",
-      username: "Bret",
-      email: "Sincere@april.biz"
-    }]
-  constructor() { }
+  data = [];
 
-  ngOnInit() {
-  }
+  constructor(private myitemsService:MyitemsService) { }
 
+  
+  onCreateCall(event){
+    event.confirm.resolve(event.newData);
+    this.myitemsService.createProduct(event.newData.name, event.newData.price).subscribe();
+}
+onEditCall(event){
+    event.confirm.resolve(event.newData);
+   // this.myitemsService.updateProduct(event.newData.name, event.newData.price).subscribe();
+}
+ngOnInit() {
+//  this.electronicsService.getProducts().subscribe(
+//    (res: Response) => {
+//      console.log(res.data)
+//      this.data = res.data;
+//    }
+//  );
+}
 
   onSearch(query: string = '') {
     this.source.setFilter([
@@ -65,5 +82,6 @@ export class MyitemsComponent implements OnInit {
     ], false); 
     
   }
+
 
 }

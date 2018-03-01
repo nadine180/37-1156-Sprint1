@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MyitemsComponent } from './myitems.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { MyitemsService } from './myitems.service';
 
 @NgModule({
   imports: [
@@ -10,6 +11,6 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
   ],
   declarations: [MyitemsComponent],
   entryComponents: [],
-  providers: []
+  providers: [MyitemsService]
 })
 export class MyitemsModule { }

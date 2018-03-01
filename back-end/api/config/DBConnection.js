@@ -62,3 +62,5 @@ require('../models/users');
 
 require('../models/Member');
 
+
+require('../models/Perihan');
