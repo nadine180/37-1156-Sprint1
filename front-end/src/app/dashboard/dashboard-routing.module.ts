@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { MyitemsComponent } from './myitems/myitems.component';
+import { MyItemsComponent } from './myitems/myitems.component';
 import { ElectronicsComponent } from './store/electronics/electronics.component';
 import { AllproductsComponent } from './store/allproducts/allproducts.component';
 
@@ -19,7 +19,7 @@ const routes: Routes = [
     },
     {
       path:'myitems',
-      component: MyitemsComponent
+      component: MyItemsComponent
     },
     {
       path:'items',

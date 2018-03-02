@@ -3,20 +3,24 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
-export class MyitemsService {
+export class MyItemsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createProduct(name:string, price:number) {
-    return this.httpClient.post(environment.apiUrl + 'Nadine/createProduct', {'name':name, 'price':price});
+  createProduct(name:string, price:number, component: string, seller: string) {
+    return this.httpClient.post(environment.apiUrl + 'Nadine/createProduct', {'name':name, 'price':price,'component':component, 'seller': seller});
   }
 
   getProducts(){
     return this.httpClient.get(environment.apiUrl + 'Nadine/getProducts');
   }
+  updateProduct(id: object, name: string, price: number, component: string, seller: string ){
+    return this.httpClient.patch(environment.apiUrl + 'Nadine/updateProduct/' + id, {
+      'name':name, 'price':price, 'component':component, 'seller':seller});
+}
 
-//   updateProduct(name:string, price:number) {
-//     return this.httpClient.patch(environment.apiUrl + 'Nadine/updateProduct/:productId', {'name':name,'price':price});
-//   }
+  deleteProduct(id:object){
+    return this.httpClient.delete(environment.apiUrl + 'Nadine/deleteProduct/' + id);
+  }
 
 }
